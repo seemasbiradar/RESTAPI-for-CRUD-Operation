@@ -39,6 +39,7 @@ public class VehicleService {
 	       logger.debug("Get all Vehicles");
 	       return listOfVehicle;	     
 	}
+	
 	/* GET -Get Vehicles by id */
 	@GET
 	@Path("/{Id}")
@@ -48,7 +49,8 @@ public class VehicleService {
 			   logger.debug("The id of the vehicle to be retrived is"+Id);
 			   return vehicleById;
 		   }
-
+	
+	/* GET -Get Vehicles by Year and Make */
 	@GET
 	@Path("/Year/{Year}/Make/{Make}")
 	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
@@ -58,6 +60,7 @@ public class VehicleService {
 		return listOfVehicle;
 		}
 
+	/* GET -Get Vehicles by Year and Model */
 	@GET
 	@Path("/Year/{Year}/Model/{Model}")
 	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
@@ -67,6 +70,7 @@ public class VehicleService {
 		return listOfVehicle;
 		}
 
+	/* GET -Get Vehicles by Make and Model */
 	@GET
 	@Path("/Make/{Make}/Model/{Model}")
 	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
@@ -76,14 +80,11 @@ public class VehicleService {
 		return listOfVehicle;
 		}
 
-	// URI:
-	// /contextPath/servletPath/employees
+	/* Add New Vehicle */
 	@POST
-	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
-	
+	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })	
 	public Vehicle addVehicle(Vehicle addVh) {
 		Vehicle addVehicle = new Vehicle();
-		System.out.println("inside post");
 		try {
 			if (addVh != null) {
 				logger.debug("In Adding of the vehical" + addVehicle);
@@ -97,9 +98,7 @@ public class VehicleService {
 		return addVh;
 	}
 
-	// URI:
-	// /contextPath/servletPath/employees
-
+	/* Update - Vehicle */
 	@PUT
 	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
 	public Vehicle updateVehicle(Vehicle vh) {
@@ -115,6 +114,7 @@ public class VehicleService {
 		return vh;
 	} 
 
+	/* Delete - Vehicle */
 	@DELETE
 	@Path("/{id}")
 	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
